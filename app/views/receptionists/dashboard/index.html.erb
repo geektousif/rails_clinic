@@ -1,0 +1,14 @@
+<h1>Receptionists::Dashboard#index</h1>
+
+<p>Hello <%= current_user.full_name %></p>
+<p>You seem to be a <%= current_user.type %>.</p>
+
+
+<%= link_to "See All Patients", receptionists_patients_path %>
+<br />
+
+
+<%= button_to "Logout", destroy_user_session_path,
+    method: :delete %>
+
+

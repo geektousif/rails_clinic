@@ -1,0 +1,11 @@
+<h1 class="text-xl font-bold mb-4">Patient Details</h1>
+
+<p><strong>Full Name:</strong> <%= @patient.full_name %></p>
+<p><strong>Email:</strong> <%= @patient.email %></p>
+<p><strong>Phone:</strong> <%= @patient.phone %></p>
+<p><strong>Date of Birth:</strong> <%= @patient.date_of_birth %></p>
+<p><strong>Gender:</strong> <%= @patient.gender %></p>
+<p><strong>Address:</strong> <%= @patient.address %></p>
+<p><strong>Medical Issues:</strong> <%= @patient.medical_issues %></p>
+
+<%= link_to "Back to Dashboard", doctors_root_path %>

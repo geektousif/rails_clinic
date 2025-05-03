@@ -1,0 +1,67 @@
+<h1>Doctors::Dashboard#index</h1> 
+<%= button_to "Logout", destroy_user_session_path,
+              method: :delete %>
+
+
+<p>Hello <%= current_user.full_name %></p>
+<p>You seem to be a <%= current_user.type %>.</p>
+
+
+
+<% if @patients.any? %>
+<h2>Patients Today: <%= @patients.count %></h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Registered By</th>
+            <th>View</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @patients.each do |patient| %>
+            <tr>
+                <td><%= patient.full_name %></td>
+                <td><%= patient.age %></td>
+                <td><%= patient.registered_by %></td>
+                <td><%= link_to "View", doctors_patient_path(patient) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<% else %>
+    <div class="">
+      No patients have been registered today.
+    </div>
+  <% end %>
+
+<h2 class="text-lg font-semibold">Patient Registrations Over Time</h2>
+<canvas id="patientChart" width="400" height="200"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const ctx = document.getElementById('patientChart');
+    const chart = new Chart(ctx, {
+        data: {
+            datasets: [{
+                type: 'line',
+                label: 'Patients Registered',
+                data: <%= raw @patient_counts.values.to_json %>,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.2
+            },{
+                type: 'bar',
+                label: 'Patients Registered',
+                data: <%= raw @patient_counts.values.to_json %>,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.2
+            }],
+      labels: <%= raw @patient_counts.keys.to_json %>,
+        }
+      }
+    )
+  })
+</script>

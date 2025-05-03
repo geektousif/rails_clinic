@@ -1,0 +1,16 @@
+
+<h2>Patient Details</h2>
+
+<p><strong>Full Name:</strong> <%= @patient.full_name %></p>
+<p><strong>Email:</strong> <%= @patient.email %></p>
+<p><strong>Phone:</strong> <%= @patient.phone %></p>
+<p><strong>Date of Birth:</strong> <%= @patient.date_of_birth %></p>
+<p><strong>Gender:</strong> <%= @patient.gender %></p>
+<p><strong>Address:</strong> <%= @patient.address %></p>
+<p><strong>Medical Issues:</strong> <%= @patient.medical_issues %></p>
+
+<%= link_to "Edit", edit_receptionists_patient_path(@patient) %> |
+<%= link_to "Back to All Patients", receptionists_patients_path %> |
+<%= button_to "Delete", receptionists_patient_path(@patient), 
+            method: :delete, 
+            form: { data: { turbo_confirm: "Are you sure you want to delete this patient?" } } %>
