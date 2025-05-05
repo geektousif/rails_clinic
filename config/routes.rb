@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   namespace :receptionists do
     get "dashboard", to: "dashboard#index", as: :root
+    get "patients", to: "dashboard#index", as: :patients
+
     resources :patients
   end
   namespace :doctors do

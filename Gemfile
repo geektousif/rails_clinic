@@ -57,11 +57,15 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "faker"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "hotwire-spark", "~> 0.1.13"
+  gem "listen"
 end
 
 group :test do
@@ -69,3 +73,18 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "tailwindcss-ruby", "~> 4.1"
+
+gem "tailwindcss-rails", "~> 4.2"
+
+gem "chartkick"
+gem "groupdate"
+
+
+
+# gem "hotwire-livereload", "~> 2.0", :group => :development
+
+# gem "cssbundling-rails", "~> 1.4"
+
+gem "rails_icons", "~> 1.3"

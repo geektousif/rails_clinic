@@ -1,14 +1,17 @@
-<h1>Receptionists::Dashboard#index</h1>
+<div class="max-w-6xl mx-auto py-8 px-4">
+  <h1 class="text-2xl font-bold mb-6">Receptionist: <%= current_user.full_name %></h1>
 
-<p>Hello <%= current_user.full_name %></p>
-<p>You seem to be a <%= current_user.type %>.</p>
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-lg font-semibold">Your Patients</h2>
+    
+    <%= link_to "New Patient", new_receptionists_patient_path,
+    class: "bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 inline-block" %>
+         </div>
+
+    <%= render "receptionists/patients/list", patients: @patients %>
+
+  </div>
 
 
-<%= link_to "See All Patients", receptionists_patients_path %>
-<br />
-
-
-<%= button_to "Logout", destroy_user_session_path,
-    method: :delete %>
 
 

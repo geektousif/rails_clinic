@@ -4,6 +4,7 @@ class Doctors::DashboardController < ApplicationController
 
   def index
     @patients = Patient.where(created_at: (Time.current.beginning_of_day..Time.current.end_of_day)).includes(:receptionist)
-    @patient_counts = Patient.group("DATE(created_at)").count
+    # @patients_chart = Patient.group_by_day(:created_at, range: 30.days.ago..Time.zone.now).count
+    @patients_chart = Patient.group_by_day(:created_at).count
   end
 end

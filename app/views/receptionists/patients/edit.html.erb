@@ -1,57 +1,9 @@
+<div class="p-6 relative max-w-lg mx-auto">
+  <p  class="inline-flex items-center text-sm font-medium gap-2 text-indigo-600 mb-4"> <%= icon "arrow-left", class: "w-4 h-4" %> <%= link_to "Back to All Patients", receptionists_patients_path %></p>
 
-<h3>Edit Patient</h3>
+<div class="bg-white shadow-lg rounded-lg p-6 relative max-w-lg mx-auto">
+    <h2 class="text-lg font-semibold mb-4">Edit Patient</h2>
+    <%= render "form", patient: @patient %>
+</div>
 
-<%= form_with model: [:receptionists, @patient], url: receptionists_patient_path(@patient) do |f| %>
-  <% if @patient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
-      <ul>
-        <% @patient.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :full_name %>
-    <%= f.text_field :full_name %><br />
-  </div>
-
-  <div class="field">
-    <%= f.label :phone %>
-    <%= f.text_field :phone %><br />
-  </div>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %><br />
-  </div>
-
-  <div class="field">
-    <%= f.label :date_of_birth %>
-    <%= f.date_field :date_of_birth, max: Date.today.strftime("%Y-%m-%d") %><br />
-  </div>
-
-  <div class="field">
-    <%= f.label :gender %>
-    <%= f.select :gender, [["Male", "male"], ["Female", "female"], ["Other", "other"]], { include_blank: 'Select gender' } %><br />
-  </div>
-
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_area :address, rows: 3 %><br />
-  </div>
-
-  <div class="field">
-    <%= f.label :medical_issues %>
-    <%= f.text_area :medical_issues, rows: 5 %><br />
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update Patient", class: "btn btn-primary" %>
-  </div>
-<% end %>
-
-<%= link_to "Show", receptionists_patient_path(@patient) %> |
-<%= link_to "Back", receptionists_patients_path %>

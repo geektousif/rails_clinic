@@ -1,11 +1,11 @@
+# typed: true
+
 class Receptionists::PatientsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_receptionist!, except: [ :show, :index ]
+  before_action :authorize_receptionist!
   before_action :set_patient, only: [ :show, :edit, :update, :destroy ]
 
-  def index
-    @patients = current_user.patients
-  end
+
 
   def show
   end
@@ -36,6 +36,7 @@ class Receptionists::PatientsController < ApplicationController
 
   def destroy
     @patient.destroy
+
     redirect_to receptionists_patients_path, notice: "Patient was successfully destroyed."
   end
 

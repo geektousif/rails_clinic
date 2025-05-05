@@ -1,0 +1,20 @@
+<% if @patients.any? %>
+   <div class="overflow-x-auto bg-white shadow rounded">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Full Name</th>
+      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Date of Birth</th>
+      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Phone</th>
+      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Email</th>
+      <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700" colspan="3">Actions</th>
+</tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <%= render partial: "receptionists/patients/patient", collection: @patients %>
+        </tbody>
+      </table>
+    </div>
+    <% else %>
+      <p class="text-gray-600 mt-4">No patients registered today.</p>
+    <% end %>
